@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Datails</title>
+    <style>
+        table{
+            border-collapse: collapse;
+        }
+        button{
+            background-color: rgb(184, 77, 77);
+            padding: 5px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Employee Details</h1>
+    <div>
+        <h2>Employees Above 45</h2>
+        <% data.forEach((employee)=>{ %>
+            <% if(employee.age>45){ %>
+                <table style="border: 1px solid black;">
+                    <tr>
+                        <th>Employee Name</th>
+                        <th>Age</th>
+                        <th>Salary</th>
+                    </tr>
+                    <tr>
+                        <td><%employee.name%></td>
+                        <td><%=employee.age%></td>
+                        <td><%=employee.salary%></td>
+                        <td><button>edit</button></td>
+                        <td><button>delete</button></td>
+                    </tr>
+                </table>
+            <% } %>
+        <% }) %>
+    </div>
+
+</body>
+</html>
