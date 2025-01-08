@@ -1,43 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee Datails</title>
     <style>
-        table{
+        table,
+        th,
+        td {
+            border: 1px solid black;
             border-collapse: collapse;
+            padding: 3px;
         }
-        button{
-            background-color: rgb(184, 77, 77);
+
+        button {
+            background-color: rgb(214, 63, 63);
+            border-radius: 3px;
             padding: 5px;
             border: none;
+            margin-left: 2px;
         }
     </style>
 </head>
+
 <body>
     <h1>Employee Details</h1>
     <div>
+        <h2>Employee List</h2>
+        <ol>
+            <% data.forEach((employee)=>{%>
+                <li><%= employee.name %></li>
+            <%}) %>
+            </ol>
+    </div>
+    <div>
         <h2>Employees Above 45</h2>
-        <% data.forEach((employee)=>{ %>
-            <% if(employee.age>45){ %>
-                <table style="border: 1px solid black;">
+        <table>
+            <tr>
+                <th>Employee Name</th>
+                <th>Age</th>
+                <th>Salary</th>
+            </tr>
+            <% data.forEach((employee)=>{ %>
+                <% if(employee.age>45){ %>
+
                     <tr>
-                        <th>Employee Name</th>
-                        <th>Age</th>
-                        <th>Salary</th>
+                        <form action="/edit-or-dlt" method="post">
+                            <td>
+                                <input type="hidden" name="id" value="<%= employee._id %>">
+                                <input type="text" name="name" value="<%= employee.name %>" required>
+                            </td>
+                            <td>
+                                <input type="number" name="age" value="<%= employee.age %>" required>
+                            </td>
+                            <td>
+                                <input type="number" name="salary" value="<%= employee.salary %>" required>
+                            </td>
+                            <td>
+                                <button type="submit" name="action" value="edit">Edit</button>
+                                <button type="submit" name="action" value="delete">Delete</button>
+                            </td>
+                        </form>
                     </tr>
-                    <tr>
-                        <td><%employee.name%></td>
-                        <td><%=employee.age%></td>
-                        <td><%=employee.salary%></td>
-                        <td><button>edit</button></td>
-                        <td><button>delete</button></td>
-                    </tr>
-                </table>
-            <% } %>
-        <% }) %>
+
+
+                    <% } %>
+                        <% }) %>
+        </table>
     </div>
 
+    <br>
+    <a href="/">Go Back</a>
 </body>
+
 </html>

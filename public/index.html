@@ -1,25 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee Data</title>
+    <style>
+        form {
+            width: 270px;
+            position: relative;
+        }
+
+        label {
+            position: absolute;
+            left: 5px;
+            font-size: 20px;
+        }
+
+        input {
+            position: absolute;
+            right: 5px;
+            padding: 5px;
+        }
+        div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        button {
+            background-color: rgb(14, 232, 14);
+            border: none;
+            border-radius: 3px;
+            padding: 5px;
+            font-size: 18px;
+            position: absolute;
+        }
+    </style>
 </head>
+
 <body>
     <h1>Employee Details</h1>
     <form action="/add" method="post">
         <label for="name">Name</label>
-        <input type="text" name="name" id="name" placeholder="Enter Name Of Employee">
+        <input type="text" name="name" id="name" placeholder="Enter Name of Employee">
         <br><br>
         <label for="age">Age</label>
-        <input type="text" name="age" id="age">
+        <input type="text" name="age" id="age" placeholder="Enter age">
         <br><br>
         <label for="salary">Salary</label>
-        <input type="text" name="salary" id="salary">
-        <br><br>
-        <button type="submit">Submit</button>
+        <input type="text" name="salary" id="salary" placeholder="Enter Monthly Salary">
+        <br>
+        <div>
+            <button type="submit">Submit</button>
+        </div>
     </form>
-    <br>
+    <br><br>
     <a href="/data">Go to Details</a>
 </body>
 </html>
