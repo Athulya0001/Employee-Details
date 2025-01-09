@@ -29,21 +29,21 @@
     <div>
         <h2>Employee List</h2>
         <ol>
-            <% data.forEach((employee)=>{%>
+            <% dataName.forEach((employee)=>{%>
                 <li><%= employee.name %></li>
             <%}) %>
             </ol>
     </div>
     <div>
         <h2>Employees Above 45</h2>
+        <!-- <button></button> -->
         <table>
             <tr>
                 <th>Employee Name</th>
                 <th>Age</th>
                 <th>Salary</th>
             </tr>
-            <% data.forEach((employee)=>{ %>
-                <% if(employee.age>45){ %>
+            <% dataSalary.forEach((employee)=>{ %>
 
                     <tr>
                         <form action="/edit-or-dlt" method="post">
@@ -65,7 +65,6 @@
                     </tr>
 
 
-                    <% } %>
                         <% }) %>
         </table>
     </div>

@@ -26,7 +26,6 @@ const employeeSchema = new mongoose.Schema({
 const Employee = mongoose.model('Employee', employeeSchema);
 
 app.set('view engine', 'ejs');
-
 app.get('/', (req, res) => {
     res.sendFile('index.html');
     // const data = req.body;
@@ -38,13 +37,16 @@ app.post('/add', async (req, res) => {
     console.log(data, "Employee Data");
     const employee = new Employee(data);
     await employee.save();
-    res.send("Data added successfully");
+    res.redirect('/')
 });
 
 
 app.get('/data', async (req, res) => {
-    const data = await Employee.find();
-    res.render('index.ejs', { data });
+    const dataAge = await Employee.find().sort({age:1});
+    const dataName = await Employee.find().sort({name:1});
+    const dataSalary = await Employee.find().sort({salary:1});
+
+    res.render('index.ejs', { dataAge, dataName, dataSalary });
 
 })
 
